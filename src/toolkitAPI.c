@@ -142,7 +142,7 @@ int DLLEXPORT swmm_setSimulationDateTime(int timetype, int year, int month,
         error_code_index = ERR_API_INPUTNOTOPEN;
     }
     // Check if Simulation is Running
-    else if(swmm_IsStartedFlag() == TRUE)
+    else if(swmm_IsStartedFlag() == FALSE)
     {
         error_code_index = ERR_API_SIM_NRUNNING;
     }
@@ -588,7 +588,7 @@ int DLLEXPORT swmm_setNodeParam(int index, int Param, double value)
     //~ {
         //~ errcode = ERR_API_SIM_NRUNNING;
     //~ }
-    else if(swmm_IsStartedFlag() == TRUE)
+    else if(swmm_IsStartedFlag() == FALSE)
     {
         error_code_index = ERR_API_SIM_NRUNNING;
     }
@@ -698,14 +698,14 @@ int DLLEXPORT swmm_setLinkParam(int index, int Param, double value)
             // offset1
             case SM_OFFSET1:
                 // Check if Simulation is Running
-                if(swmm_IsStartedFlag() == TRUE)
+                if(swmm_IsStartedFlag() == FALSE)
                 {
                     error_code_index = ERR_API_SIM_NRUNNING; break;
                 }
                 Link[index].offset1 = value / UCF(LENGTH); break;
             case SM_OFFSET2:
                 // Check if Simulation is Running
-                if(swmm_IsStartedFlag() == TRUE)
+                if(swmm_IsStartedFlag() == FALSE)
                 {
                     error_code_index = ERR_API_SIM_NRUNNING; break;
                 }
@@ -785,7 +785,7 @@ int DLLEXPORT swmm_setSubcatchParam(int index, int Param, double value)
         error_code_index = ERR_API_INPUTNOTOPEN;
     }
      // Check if Simulation is Running
-    else if(swmm_IsStartedFlag() == TRUE)
+    else if(swmm_IsStartedFlag() == FALSE)
     {
         error_code_index = ERR_API_SIM_NRUNNING;
     }
@@ -969,7 +969,7 @@ int DLLEXPORT swmm_setLidUParam(int index, int lidIndex, int Param, double value
         error_code_index = ERR_API_OBJECT_INDEX;
     }
     // Check if model is running
-    else if(swmm_IsStartedFlag() == TRUE)
+    else if(swmm_IsStartedFlag() == FALSE)
     {
         error_code_index = ERR_API_SIM_NRUNNING;
     }
@@ -2867,7 +2867,7 @@ int DLLEXPORT swmm_setNodeOpening(int nodeID, int idx, int oType, double A,
     // Check if Open
     if(swmm_IsOpenFlag() == FALSE) return error_getCode(ERR_API_INPUTNOTOPEN);
     // Check if Simulation is Running
-    if(swmm_IsStartedFlag() == TRUE) return error_getCode(ERR_API_SIM_NRUNNING);
+    if(swmm_IsStartedFlag() == FALSE) return error_getCode(ERR_API_SIM_NRUNNING);
     // Check if object index is within bounds
     if (nodeID < 0 || nodeID >= Nobjects[NODE]) return error_getCode(ERR_API_OBJECT_INDEX);
 
@@ -2888,7 +2888,7 @@ int DLLEXPORT swmm_deleteNodeOpening(int nodeID, int idx)
     // Check if Open
     if(swmm_IsOpenFlag() == FALSE) return error_getCode(ERR_API_INPUTNOTOPEN);
     // Check if Simulation is Running
-    if(swmm_IsStartedFlag() == TRUE) return error_getCode(ERR_API_SIM_NRUNNING);
+    if(swmm_IsStartedFlag() == FALSE) return error_getCode(ERR_API_SIM_NRUNNING);
     // Check if object index is within bounds
     if (nodeID < 0 || nodeID >= Nobjects[NODE]) return error_getCode(ERR_API_OBJECT_INDEX);
 
