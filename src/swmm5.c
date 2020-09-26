@@ -416,7 +416,9 @@ int DLLEXPORT swmm_step(double* elapsedTime)
             // --- route flow & WQ through drainage system
             //     (runoff will be calculated as needed)
             //     (NewRoutingTime is updated)
-            execRouting();
+            execRouting(); 
+            // Rachel: This calls routing_execute and runoff_execute
+            // if their options are set to TRUE.
         }
 
 ////  Following code segment modified for release 5.1.013.  ////               //(5.1.013)

@@ -291,6 +291,7 @@ BOOST_FIXTURE_TEST_CASE(get_result_during_sim, FixtureBeforeStep){
 
         error = swmm_getNodeResult(nde_ind, SM_TOTALINFLOW, &val);
         BOOST_REQUIRE(error == ERR_NONE);
+        // No testing outflow?
         error = swmm_getNodeResult(nde_ind, SM_LOSSES, &val);
         BOOST_REQUIRE(error == ERR_NONE);
         error = swmm_getNodeResult(nde_ind, SM_NODEFLOOD, &val);
@@ -301,6 +302,7 @@ BOOST_FIXTURE_TEST_CASE(get_result_during_sim, FixtureBeforeStep){
         BOOST_REQUIRE(error == ERR_NONE);
         error = swmm_getNodeResult(nde_ind, SM_NODEVOL, &val);
         BOOST_REQUIRE(error == ERR_NONE);
+        // This SM_NODEFLOOD is a duplicate.
         error = swmm_getNodeResult(nde_ind, SM_NODEFLOOD, &val);
         BOOST_REQUIRE(error == ERR_NONE);
         error = swmm_getNodeResult(nde_ind, SM_NODEDEPTH, &val);

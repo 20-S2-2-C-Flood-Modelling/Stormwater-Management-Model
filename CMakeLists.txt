@@ -33,9 +33,9 @@ option(BUILD_COVERAGE "Build library for coverage" OFF)
 # containing root CMakeLists.txt file.
 add_subdirectory(tools/swmm-output)
 
-#IF (BUILD_TESTS)
+IF (BUILD_TESTS)
     add_subdirectory(tests)
-#ENDIF (BUILD_TESTS)
+ENDIF (BUILD_TESTS)
 
 
 # Sets for output directory for executables and libraries.
