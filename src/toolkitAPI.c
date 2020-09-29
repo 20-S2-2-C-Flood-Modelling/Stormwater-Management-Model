@@ -3228,3 +3228,29 @@ int DLLEXPORT swmm_deleteNodeOpenings(int nodeID)
     coupling_deleteOpenings(nodeID);
     return(0);
 }
+
+
+//======================================================================
+// MORE COUPLING FUNCTIONS
+//======================================================================
+
+struct Flow {
+    char* id;
+    double flow;
+};
+
+int DLLEXPORT swmm_coupling_flows(struct Flow flows[])
+{
+    for ( int i=0; i<Nobjects[NODE]; i++ )
+    {
+        int isCoupled;
+        swmm_getNodeIsCoupled(i, &isCoupled);
+        struct Flow f = {Node[i].ID, 0.0};
+        if (isCoupled) 
+        {
+            f.flow = Node[i].couplingInflow;
+        }
+        flows[i] = f;
+    }
+    return 0;
+}
